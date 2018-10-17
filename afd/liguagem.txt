@@ -1,0 +1,34 @@
+se
+entao
+senao
+para
+enquanto
+funcao
+fim
+
+<S> ::= a<A> | e<A> | i<A> | o<A> | u<A>
+<A> ::= a<A> | e<A> | i<A> | o<A> | u<A> | $
+
+<S> ::= 1<A> | 2<A> | 3<A> | 4<A> | 5<A> | 6<A> | 7<A> | 0<A>
+<A> ::= 1<A> | 2<A> | 3<A> | 4<A> | 5<A> | 6<A> | 7<A> | 0<A> | $
+
+<S> ::= '<A>
+<A> ::= a<A> | e<A> | i<A> | o<A> | u<A> | '<B>
+<B> ::= $
+
+<S> ::= a<A> | b<S> | <B>
+<A> ::= a<S> | b<A> | $
+<B> ::= a<A> | b<B> | <S>
+
+<S> ::= a<S> | b<A> | b<B> | c<B>
+<A> ::= a<B> | b<A> | c<S>
+<B> ::= a<A> | b<B> | c<S> | c<A>
+
+<S> ::= a<A> | b<B> | b<X> | c<S> | c<X>
+<A> ::= a<S> | a<X> | b<C> | c<A>
+<B> ::= a<A> | c<B> | c<S> | c<X>
+<C> ::= a<S> | a<X> | c<A> | c<C>
+<X> ::= $
+
+<S> ::= a<A> | b<S> | <A>
+<A> ::= a<S> | b<A> | <B> | $
