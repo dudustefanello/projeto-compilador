@@ -1,4 +1,4 @@
-from Inuteis import Inuteis
+﻿from Inuteis import Inuteis
 from Producao import Producao
 
 class Inalcancaveis(Inuteis):
@@ -8,7 +8,7 @@ class Inalcancaveis(Inuteis):
 
 
     def imprimir(self):
-        return super().imprimir('\n\n# SEM INALCANCAVEIS:\n')
+        return super().imprimir('\n\n# SEM INALCANCAVEIS:\n', True)
 
           
     def removerInalcancaveis(self):

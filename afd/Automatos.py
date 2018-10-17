@@ -1,4 +1,4 @@
-from Producao import Producao   # Importa a implementação da classe/tipo produção
+﻿from Producao import Producao   # Importa a implementação da classe/tipo produção
 import re                       # Importa a biblioteca do RegEx para Python
 
 class Automato(object):
@@ -129,45 +129,14 @@ class Automato(object):
 
     # -- Imprime o automato
     def imprimir(self, mensagem, First = False):
-        self.imprimirTela(mensagem)             # Imprime em tela
         self.imprimirArquivo(mensagem, First)   # Imprime em Arquivo de texto
-
-    # -- Imprime o automato finito deterministico
-    def imprimirTela(self, mensagem = ''):
-        print(mensagem)                                             # Mostra uma mensagem, para identificar o automato que se estpa imprimindo
-        estados = self.pegarAutomato()                              # Utiliza o estado minimiazdo, se ele já existir
-        for nome, estado in sorted(estados.items()):                # Faz um loop nos estados
-            print(' *' if nome in self.Finais else '  ', end='')    # Marca os estados que são finais
-            print(nome, end=' = ')                                  # Imprime o nome/numero do estado
-
-            for simbolo, transicoes in estado.items():              # Faz um loop em cada estado
-                
-                if len(transicoes) > 0:                             # Se existir transições para um símbolo
-                    print(simbolo, transicoes, end=', ')            # Imprime o símbolo e a lista de transições
-
-            print('')                                               # Insere uma quebra de linha ao final de cada impressão de símbolo
 
 
     # -- Imprime o automato finito deterministico
     def imprimirArquivo(self, mensagem = '', First = False):
-        if First:                                                   # Se for o primeiro autômato da execução
-            arquivo = open('automato.txt', 'w')                     # reseta o arquivo
-        else:                                                       # Senão
-            arquivo = open('automato.txt', 'a')                     # Adiciona ao arquivo já existente
-
-        estados = self.pegarAutomato()                              # Utiliza o estado minimiazdo, se ele já existir
-
-        arquivo.write(mensagem)                                     # Insere uma mensagem, para identificar o automato que se estpa imprimindo
-        for nome, estado in sorted(estados.items()):                # Faz um loop nos estados
-            arquivo.write(' *' if nome in self.Finais else '  ')    # Marca os estados que são finais
-            arquivo.write(str(nome) + ' = ')                        # Imprime o nome/numero do estado
-
-            for simbolo, transicoes in estado.items():              # Faz um loop em cada estado
-                
-                if len(transicoes) > 0:                             # Se existir transições para um símbolo
-                    arquivo.write(simbolo + str(transicoes) + ', ') # Imprime o símbolo e a lista de transições
-
-            arquivo.write('\n')                                     # Insere uma quebra de linha ao final de cada impressão de símbolo
+        arquivo = open('./automato.txt', 'w')
+        arquivo.write(str(self.pegarAutomato()))
+        arquivo.close()
 
 
     # -- Insere todos os símbolos do alfabeto em um estado
@@ -209,13 +178,9 @@ class Automato(object):
         texto = entrada.partition('\n\n')[2]            # Separa o texto após as duas quebras de linha para a leitura de gramática
         self.carregaGramatica(texto.splitlines())       # Envia o texto em formato de lista com as linhas do texto
         self.setAlfabeto()                              # Relaciona os estados com o alfabeto da linguagem
+        
 
-
-    # -- Retorna o automato mais atualizado que houver
     def pegarAutomato(self):
-        '''Foi necessária a implementação desse método pois no processo de minimização, 
-        ocorriam erros ao tentar alterar a estrutura do autômato dentro da recurssão.
-        Como foi criada uma nova estrutura para os automatos minimizados, essa função retorna o autômato mais recente.'''
         if len(self.AutomatoMinimizado) > 0:    # Se o tamanho do dicionário de estados for maior que 0
             return self.AutomatoMinimizado      # Já existe um autômato minimizado e ele é retornado
         else:                                   # Senão

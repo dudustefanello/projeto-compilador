@@ -1,0 +1,46 @@
+// palavras reservadas
+    select
+    from
+    where
+    left
+    join
+    on
+
+// gramática regular
+    <S> ::=
+        // número
+            0<A> | 1<A> | 2<A> | 3<A> | 4<A> | 5<A> | 6<A> | 7<A> | 8<A> | 9<A> |
+
+        // string
+            '<B> | "<C>
+
+        // funcoes
+            A<E> | B<E> | C<E> | D<E> | E<E> | F<E> | G<E> | H<E> | I<E> | J<E> | K<E> | L<E> | M<E> | N<E> | O<E> | P<E> | Q<E> | R<E> | S<E> | T<E> |U<E> | V<E> | X<E> | Y<E> | X<E> | Z<E>
+
+        // variaveis
+            a<J> | b<J> | c<J> | d<J> | e<J> | f<J> | g<J> | h<J> | i<J> | j<J> | k<J> | l<J> | m<J> | n<J> | o<J> | p<J> | q<J> | r<J> | s<J> | t<J> |u<J> | v<J> | x<J> | y<J> | x<J> | z<J>
+
+
+    // número    
+        <A> ::= 0<A> | 1<A> | 2<A> | 3<A> | 4<A> | 5<A> | 6<A> | 7<A> | 8<A> | 9<A> | $
+
+    // string:
+        <B> ::= a<B> | b<B> | c<B> | d<B> | e<B> | f<B> | g<B> | h<B> | i<B> | j<B> | k<B> | l<B> | m<B> | n<B> | o<B> | p<B> | q<B> | r<B> | s<B> | t<B> | u<B> | v<B> | x<B> | y<B> | x<B> | z<B> |
+                A<B> | B<B> | C<B> | D<B> | E<B> | F<B> | G<B> | H<B> | I<B> | J<B> | K<B> | L<B> | M<B> | N<B> | O<B> | P<B> | Q<B> | R<B> | S<B> | T<B> | U<B> | V<B> | X<B> | Y<B> | X<B> | Z<B> | '<D>
+    
+        <C> ::= a<C> | b<C> | c<C> | d<C> | e<C> | f<C> | g<C> | h<C> | i<C> | j<C> | k<C> | l<C> | m<C> | n<C> | o<C> | p<C> | q<C> | r<C> | s<C> | t<C> | u<C> | v<C> | x<C> | y<C> | x<C> | z<C> |
+                A<C> | B<C> | C<C> | D<C> | E<C> | F<C> | G<C> | H<C> | I<C> | J<C> | K<C> | L<C> | M<C> | N<C> | O<C> | P<C> | Q<C> | R<C> | S<C> | T<C> | U<C> | V<C> | X<C> | Y<C> | X<C> | Z<C> | "<D>
+
+        <D> ::= $
+
+    // funcoes
+        <E> ::= A<F> | B<F> | C<F> | D<F> | E<F> | F<F> | G<F> | H<F> | I<F> | J<F> | K<F> | L<F> | M<F> | N<F> | O<F> | P<F> | Q<F> | R<F> | S<F> | T<F> | U<F> | V<F> | X<F> | Y<F> | X<F> | Z<F>
+        
+        <F> ::= A<G> | B<G> | C<G> | D<G> | E<G> | F<G> | G<G> | H<G> | I<G> | J<G> | K<G> | L<G> | M<G> | N<G> | O<G> | P<G> | Q<G> | R<G> | S<G> | T<G> | U<G> | V<G> | X<G> | Y<G> | X<G> | Z<G> | (<H>
+        
+        <H> ::= )<I>
+
+        <I> ::= $
+
+    // variaveis
+        <J> ::= a<K> | b<K> | c<K> | d<K> | e<K> | f<K> | g<K> | h<K> | i<K> | j<K> | k<K> | l<K> | m<K> | n<K> | o<K> | p<K> | q<K> | r<K> | s<K> | t<K> |u<K> | v<K> | x<K> | y<K> | x<K> | z<K> | $
