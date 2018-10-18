@@ -7,4 +7,3 @@ from Analisador import Analisador
 
 analisador = Analisador()
 analisador.analisar('./codigo.in')
-
