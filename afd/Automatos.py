@@ -163,7 +163,6 @@ class Automato(object):
         self.Estados.update({len(self.Estados): {}})    # Inicializa o estado inicial com: um inteiro para chave e um dicionário vazio para conteúdo
 
         for simbolo in entrada:                         # Faz um loop, caractere e caractere na string da estrada
-            simbolo = simbolo.lower()                   # Utiliza todas as letras em minusculo
 
             if simbolo == '\n':                         # Identifica quebra de linha
                 if new:                                 # Se houve duas quebras de linha seguidas:
