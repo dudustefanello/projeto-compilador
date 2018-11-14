@@ -8,6 +8,8 @@ class AnaliseLexica(object):
     """
 
     separadores = ['\n', ' ']
+    separadoresTokens = ['(', ')', '+', '-', '.']
+
     automato = ImportaAutomato()
     tabela = Tabela()
     regras = dict()
@@ -31,7 +33,7 @@ class AnaliseLexica(object):
         self.linha = 0
         self.coluna = 0
 
-        self.__printregras()
+        # self.__printregras()
 
         self.__percorrecodigo(codigo)
 
@@ -67,17 +69,29 @@ class AnaliseLexica(object):
 
     def __caracterevalido(self, i):
         """ Verifica se um caractere pertencente à linguagem
-            é válido dado o estado atual da análise
+            é válido dado o estado atual da análise.
+            Tokens que também são separadores fazem parte do alfabeto da linguagem.
 
             :param i: caractere para testar
         """
         if self.regras[self.estado][i]:
             self.__saltaestado(i)
 
+        elif i in self.separadoresTokens:
+            self.__reconheceseparadorespecial(i)
+
         else:
-            self.__printregras()
-            print(self.estado)
             raise ErroLexico(2, i, self.linha, self.coluna)
+
+
+    def __reconheceseparadorespecial(self, i):
+        """ Reconhece um estado que é separador e token.
+
+            :param i: carctere para testar
+        """
+        self.__reconheceestado(i)
+        self.__saltaestado(i)
+        self.__reconheceestado(i)
 
 
     def __novalinha(self, i):

@@ -6,4 +6,4 @@ sys.path.append('./lex')
 from Analisador import Analisador
 
 analisador = Analisador()
-analisador.analisar('./codigo.in')
+analisador.analisar('./codigo.in') 

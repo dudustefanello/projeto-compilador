@@ -53,7 +53,7 @@ class ErroLexico(Exception):
 
             :param coluna: Coluna onde está o caractere que apresentou erro
         """
-        for i in range(coluna):
+        for i in range(coluna - 1):
             print(' ', end = '')
 
         print('^')
